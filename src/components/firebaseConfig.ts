@@ -1,15 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
-    apiKey: "AIzaSyCJb_VcZlNEqd-UAF1ALHoP26VCbfvCgf4",
-    authDomain: "viktorykings-mini-paint.firebaseapp.com",
-    projectId: "viktorykings-mini-paint",
-    storageBucket: "viktorykings-mini-paint.appspot.com",
-    messagingSenderId: "323718827940",
-    appId: "1:323718827940:web:a9749e7ed3742c5e76bb31"
+    apiKey: import.meta.env.VITE_APIKEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_PROJECT_ID,
+    storageBucket: import.meta.env.STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.MESSAGING_SENDER_ID,
+    appId: import.meta.env.APP_ID
   };
 
 // Initialize Firebase
