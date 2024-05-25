@@ -1,0 +1,19 @@
+:root {
+    --blue: #5468ff;
+    --white: #ffffff;
+    --black: black;
+    --green: #21bc6f;
+    --blue: #19c6b5;
+
+    --grey-text: #838383;
+    --grey-text-darker: #505050;
+    --blue-text: #228b81;
+
+    --main-background: linear-gradient(45deg, var(--green), #9198e5);
+
+    --input-bg: #ededed;
+
+  }
+  * {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  }
