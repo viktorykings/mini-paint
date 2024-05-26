@@ -1,0 +1,42 @@
+@import url(../../colors.css);
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+.logo{
+    font-size: 3em;
+}
+.links{
+    display: flex;
+    gap: 30px
+}
+.header-link{
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+.header-link:hover{
+    color: var(--grey-text-darker);
+}
+
+.header-btn{
+    background-color: var(--white);
+    color: var(--grey-text);
+    transition: color 0.1s ease;
+}
+
+.header-btn:hover{
+    background-color: transparent;
+    color: var(--white);
+}
+

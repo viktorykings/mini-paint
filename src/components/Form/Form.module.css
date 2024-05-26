@@ -5,7 +5,7 @@ form{
     height: auto;
     width: 500px;
     border-radius: 20px;
-    box-shadow: 0 0 20px var(--blue);
+    box-shadow: 0 0 20px var(--form-shadow);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ input:focus{
     outline: 2px solid var(--blue);
 }
 
-button{
+.button{
     height: 50px;
     width: 150px;
     margin: 20px auto;
@@ -49,7 +49,7 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+.button:hover{
     filter: brightness(1.1);
 }
 
@@ -58,13 +58,13 @@ h1{
     margin: 40px auto 30px;
 }
 
-a{
+.forget-password-link{
     cursor: pointer;
     text-decoration: underline;
     transition: color 0.3s ease;
     margin: 10px auto;
 }
 
-a:hover{
+.forget-password-link:hover{
     color: var(--grey-text-darker);
 }

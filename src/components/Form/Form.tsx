@@ -1,21 +1,21 @@
-import "./Form.module.css";
+import styles from './Form.module.css'
 
 interface FormProps {
   formTitle: string;
-  didForgetPassword: boolean;
+  isRegisterForm: boolean;
   btnText: string;
 }
 
 const Form = (props: FormProps) => {
-  const { formTitle, didForgetPassword, btnText } = props;
+  const { formTitle, isRegisterForm, btnText } = props;
   return (
     <form>
       <h1>{formTitle}</h1>
-      <input id="name" type="text" placeholder="Name" />
+      {isRegisterForm && <input id="name" type="text" placeholder="Name" />}
       <input id="email" type="email" placeholder="Email" />
       <input type="password" placeholder="Password" />
-      {didForgetPassword && <a>Forgot your password?</a>}
-      <button type="submit">{btnText}</button>
+      {!isRegisterForm && <a className={styles['forget-password-link']}>Forgot your password?</a>}
+      <button type="submit" className={styles.button}>{btnText}</button>
     </form>
   );
 };
