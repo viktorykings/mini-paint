@@ -1,5 +1,5 @@
 const PaintPage = () => {
-    return ( <p>paint</p> );
-}
- 
+  return <p>paint</p>;
+};
+
 export default PaintPage;

@@ -1,10 +1,10 @@
 import Form from "../components/Form/Form";
 
 const SignPage = () => {
-    return (
+  return (
     <>
-    <Form formTitle={"Sign in"} isRegisterForm={false} btnText={"sign in"} />
+      <Form formTitle={"Sign in"} isRegisterForm={false} btnText={"sign in"} />
     </>
-)
-}
+  );
+};
 export default SignPage;
