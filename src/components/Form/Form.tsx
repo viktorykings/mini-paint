@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
+import { signIn } from "../../firebase/AuthService";
 
 interface FormProps {
   formTitle: string;
@@ -21,12 +22,11 @@ const Form = (props: FormProps) => {
 
   //  };
 
-  //  const handleSignIn = (e: React.MouseEvent<HTMLElement>) => {
-  //   e.preventDefault()
-  //   e.stopPropagation()
-  //   signIn(email, password)
-
-  //  }
+  const handleSignIn = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    signIn(email, password);
+  };
   const { formTitle, isRegisterForm, btnText } = props;
   return (
     <form>
@@ -56,7 +56,7 @@ const Form = (props: FormProps) => {
       {!isRegisterForm && (
         <a className={styles["forget-password-link"]}>Forgot your password?</a>
       )}
-      <button type="submit" className={styles.button}>
+      <button type="submit" className={styles.button} onClick={handleSignIn}>
         {btnText}
       </button>
     </form>
