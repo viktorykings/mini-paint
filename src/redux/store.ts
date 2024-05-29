@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
+import strokeReducer from "./slices/strokeSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    stroke: strokeReducer,
   },
 });
 

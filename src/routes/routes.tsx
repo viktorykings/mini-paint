@@ -6,7 +6,7 @@ import RegisterPage from "../pages/RegisterPage.tsx";
 
 const SignPage = lazy(() => import("../pages/SignPage.tsx"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage.tsx"));
-const PaintPage = lazy(() => import("../pages/PaintPage.tsx"));
+const PaintPage = lazy(() => import("../pages/Paint/PaintPage.tsx"));
 const Gallery = lazy(() => import("../pages/Gallery/Gallery.tsx"));
 
 export const routes: RouteObject[] = [
