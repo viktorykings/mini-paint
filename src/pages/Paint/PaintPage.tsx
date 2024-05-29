@@ -19,11 +19,10 @@ import {
 } from "../../utils/canvasUtils";
 import { endStroke } from "../../redux/actions/sharedActions";
 import { RootState } from "../../redux/store";
-import Rect from '../../assets/rectangle.svg';
-import Circle from '../../assets/circle.svg';
-import Line from '../../assets/line.svg';
-import WavyLine from '../../assets/wavyLine.svg';
-
+import Rect from "../../assets/rectangle.svg";
+import Circle from "../../assets/circle.svg";
+import Line from "../../assets/line.svg";
+import WavyLine from "../../assets/wavyLine.svg";
 
 const PaintPage = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -91,7 +90,7 @@ const PaintPage = () => {
   };
 
   const handleChangeTool = (e: React.MouseEvent<HTMLElement>) => {
-    const target = (e.target as HTMLButtonElement).closest('button');
+    const target = (e.target as HTMLButtonElement).closest("button");
     const isButton = (target as HTMLElement).tagName === "BUTTON";
     if (isButton && target) {
       dispatch(setShape(target.value));
@@ -116,13 +115,23 @@ const PaintPage = () => {
       ></canvas>
       <div className={styles.tools}>
         <div className={styles.shapes} onClick={handleChangeTool}>
-          <button value="brush"><img src={WavyLine} alt="brush" /></button>
-          <button value="line"><img src={Line} alt="line" /></button>
-          <button value="circle"><img src={Circle} alt="circle" /></button>
-          <button value="rect"><img src={Rect} alt="rect" /></button>
+          <button value="brush">
+            <img src={WavyLine} alt="brush" />
+          </button>
+          <button value="line">
+            <img src={Line} alt="line" />
+          </button>
+          <button value="circle">
+            <img src={Circle} alt="circle" />
+          </button>
+          <button value="rect">
+            <img src={Rect} alt="rect" />
+          </button>
         </div>
-        <button className={styles.clean} onClick={cleanCanvas}>clean</button>
-        <div className={styles['brush-size']}>
+        <button className={styles.clean} onClick={cleanCanvas}>
+          clean
+        </button>
+        <div className={styles["brush-size"]}>
           <p>Brush size: {currentStroke.width} px</p>
           <input
             type="range"

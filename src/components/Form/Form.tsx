@@ -1,33 +1,25 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
-import { signIn } from "../../firebase/AuthService";
 
 interface FormProps {
   formTitle: string;
   isRegisterForm: boolean;
   btnText: string;
+  handleClick: (email: string, password: string) => void;
 }
 
 const Form = (props: FormProps) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //   const handleRegister = (e: React.MouseEvent<HTMLElement>) => {
-  //     e.preventDefault()
-  //     e.stopPropagation()
 
-  //     singUp(email, password)
-  //     setEmail("");
-  //     setPassword("");
+  const { formTitle, isRegisterForm, btnText, handleClick } = props;
 
-  //  };
-
-  const handleSignIn = (e: React.MouseEvent<HTMLElement>) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    signIn(email, password);
+    handleClick(email, password);
   };
-  const { formTitle, isRegisterForm, btnText } = props;
   return (
     <form>
       <h1>{formTitle}</h1>
@@ -56,7 +48,7 @@ const Form = (props: FormProps) => {
       {!isRegisterForm && (
         <a className={styles["forget-password-link"]}>Forgot your password?</a>
       )}
-      <button type="submit" className={styles.button} onClick={handleSignIn}>
+      <button type="submit" className={styles.button} onClick={handleSubmit}>
         {btnText}
       </button>
     </form>
