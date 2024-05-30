@@ -68,3 +68,6 @@ h1{
 .forget-password-link:hover{
     color: var(--grey-text-darker);
 }
+.error{
+    color: var(--red);
+}

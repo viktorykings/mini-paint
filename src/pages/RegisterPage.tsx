@@ -1,10 +1,35 @@
 import Form from "../components/Form/Form";
-import { signIn, singUp } from "../firebase/AuthService";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { saveError } from "../redux/slices/authSlice";
 
 const RegisterPage = () => {
-  const handleRegister = ( email: string, password: string, userName?: string) => {
+  const dispatch = useDispatch();
+  const singUp = (
+    email: string,
+    password: string,
+    userName: string | undefined,
+  ) => {
+    const auth = getAuth();
 
-    singUp(email, password, userName!);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        if (user) {
+          updateProfile(user, {
+            displayName: userName,
+          });
+        }
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        if (errorMessage) dispatch(saveError(errorMessage));
+      });
   };
   return (
     <>
@@ -12,7 +37,7 @@ const RegisterPage = () => {
         formTitle={"Create account"}
         isRegisterForm={true}
         btnText={"Sign up"}
-        handleClick={handleRegister}
+        handleClick={singUp}
       />
     </>
   );

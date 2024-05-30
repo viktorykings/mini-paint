@@ -39,7 +39,7 @@ const PaintPage = () => {
   const isDrawing = !!currentStroke.points.length;
   const dispatch = useDispatch();
 
-  console.log(user)
+  console.log(user);
   useEffect(() => {
     const { context } = getCanvasWithContext();
     if (!context) {
@@ -108,26 +108,26 @@ const PaintPage = () => {
   const saveCanvas = () => {
     const { canvas } = getCanvasWithContext();
     if (!canvas) return;
-    console.log('saved')
+    console.log("saved");
     // canvas.toDataURL('image/png');
     canvas.toBlob((blob) => {
       const newImg = document.createElement("img");
       const url = URL.createObjectURL(blob);
 
-      console.log(url, newImg)
+      console.log(url, newImg);
 
-      dispatch(saveImage({url: url, author: ''}))
-      console.log(currentGallery)
-    
+      dispatch(saveImage({ url: url, author: "" }));
+      console.log(currentGallery);
+
       // newImg.onload = () => {
       //   // no longer need to read the blob so it's revoked
       //   URL.revokeObjectURL(url);
       // };
-    
+
       // newImg.src = url;
       // document.body.appendChild(newImg);
     });
-  }
+  };
   return (
     <div className={styles.paint}>
       <canvas
