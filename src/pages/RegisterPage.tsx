@@ -1,9 +1,10 @@
 import Form from "../components/Form/Form";
-import { singUp } from "../firebase/AuthService";
+import { signIn, singUp } from "../firebase/AuthService";
 
 const RegisterPage = () => {
-  const handleRegister = (email: string, password: string) => {
-    singUp(email, password);
+  const handleRegister = ( email: string, password: string, userName?: string) => {
+
+    singUp(email, password, userName!);
   };
   return (
     <>

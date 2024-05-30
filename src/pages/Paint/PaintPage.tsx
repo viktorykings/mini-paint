@@ -23,6 +23,7 @@ import Rect from "../../assets/rectangle.svg";
 import Circle from "../../assets/circle.svg";
 import Line from "../../assets/line.svg";
 import WavyLine from "../../assets/wavyLine.svg";
+import { saveImage } from "../../redux/slices/gallerySlice";
 
 const PaintPage = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -31,11 +32,14 @@ const PaintPage = () => {
     return { canvas, context: canvas?.getContext("2d") };
   };
 
+  const user = useSelector((state: RootState) => state.auth);
   const currentStroke = useSelector((state: RootState) => state.stroke);
+  const currentGallery = useSelector((state: RootState) => state.gallery);
 
   const isDrawing = !!currentStroke.points.length;
   const dispatch = useDispatch();
 
+  console.log(user)
   useEffect(() => {
     const { context } = getCanvasWithContext();
     if (!context) {
@@ -101,6 +105,29 @@ const PaintPage = () => {
     if (!context) return;
     context.clearRect(0, 0, 600, 600);
   };
+  const saveCanvas = () => {
+    const { canvas } = getCanvasWithContext();
+    if (!canvas) return;
+    console.log('saved')
+    // canvas.toDataURL('image/png');
+    canvas.toBlob((blob) => {
+      const newImg = document.createElement("img");
+      const url = URL.createObjectURL(blob);
+
+      console.log(url, newImg)
+
+      dispatch(saveImage({url: url, author: ''}))
+      console.log(currentGallery)
+    
+      // newImg.onload = () => {
+      //   // no longer need to read the blob so it's revoked
+      //   URL.revokeObjectURL(url);
+      // };
+    
+      // newImg.src = url;
+      // document.body.appendChild(newImg);
+    });
+  }
   return (
     <div className={styles.paint}>
       <canvas
@@ -130,6 +157,9 @@ const PaintPage = () => {
         </div>
         <button className={styles.clean} onClick={cleanCanvas}>
           clean
+        </button>
+        <button className={styles.clean} onClick={saveCanvas}>
+          save
         </button>
         <div className={styles["brush-size"]}>
           <p>Brush size: {currentStroke.width} px</p>

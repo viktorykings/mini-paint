@@ -2,10 +2,12 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UserInterface {
   value: string | null;
+  name: string | null
 }
 
 const initialState: UserInterface = {
   value: null,
+  name: null
 };
 
 export const authSlice = createSlice({
@@ -15,10 +17,12 @@ export const authSlice = createSlice({
     saveUser: (state, action: PayloadAction<string | null>) => {
       state.value = action.payload;
     },
+    saveName: (state, action: PayloadAction<string | null>) => {
+      state.name = action.payload;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { saveUser } = authSlice.actions;
+export const { saveUser, saveName } = authSlice.actions;
 
 export default authSlice.reducer;

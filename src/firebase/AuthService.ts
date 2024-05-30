@@ -3,15 +3,20 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
-export const singUp = (email: string, password: string) => {
+export const singUp = (email: string, password: string, name: string) => {
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user;
       console.log(user);
+      updateProfile(auth.currentUser!, {
+        displayName: name
+      })
+
       // ...
     })
     .catch((error) => {
@@ -21,6 +26,13 @@ export const singUp = (email: string, password: string) => {
       console.log(errorCode, errorMessage);
       return { errorCode, errorMessage };
     });
+    if(auth.currentUser){
+      updateProfile(auth.currentUser, {
+        displayName: name
+      })
+    }
+
+console.log(auth.currentUser)
 };
 
 export const signIn = (email: string, password: string) => {

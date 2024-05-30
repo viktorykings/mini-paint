@@ -5,7 +5,7 @@ import { RootState } from "../../redux/store";
 import { getAuth, signOut } from "firebase/auth";
 const Header = () => {
   const auth = getAuth();
-  const user = useSelector((state: RootState) => state.auth.value);
+  const user = useSelector((state: RootState) => state.auth);
   console.log("user from state", user);
   return (
     <header>

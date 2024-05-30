@@ -5,7 +5,7 @@ interface FormProps {
   formTitle: string;
   isRegisterForm: boolean;
   btnText: string;
-  handleClick: (email: string, password: string) => void;
+  handleClick: (email: string, password: string, userName?: string) => void;
 }
 
 const Form = (props: FormProps) => {
@@ -18,7 +18,7 @@ const Form = (props: FormProps) => {
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    handleClick(email, password);
+    handleClick(email, password, name);
   };
   return (
     <form>
