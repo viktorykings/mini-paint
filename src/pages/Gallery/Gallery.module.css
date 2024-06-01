@@ -1,6 +1,11 @@
-.container{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }

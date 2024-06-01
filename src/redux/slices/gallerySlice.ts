@@ -14,7 +14,7 @@ const initialState: Gallery = {
 };
 
 const gallerySlice = createSlice({
-  name: "currentStroke",
+  name: "gallery",
   initialState,
   reducers: {
     saveImage: (state, action: PayloadAction<ImageData>) => {
@@ -24,7 +24,5 @@ const gallerySlice = createSlice({
 });
 
 export const { saveImage } = gallerySlice.actions;
-
-// export const currentStrokeSelector = (state: RootState) => state.currentStroke;
 
 export default gallerySlice.reducer;

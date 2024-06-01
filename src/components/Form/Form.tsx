@@ -20,7 +20,6 @@ const Form = (props: FormProps) => {
   const { formTitle, isRegisterForm, btnText, handleClick } = props;
 
   const state = useSelector((state: RootState) => state.auth);
-  console.log("conmponent rerender");
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();

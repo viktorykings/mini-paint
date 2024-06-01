@@ -32,9 +32,8 @@ const PaintPage = () => {
     return { canvas, context: canvas?.getContext("2d") };
   };
 
-  const user = useSelector((state: RootState) => state.auth);
+  const user = useSelector((state: RootState) => state.auth.name);
   const currentStroke = useSelector((state: RootState) => state.stroke);
-  const currentGallery = useSelector((state: RootState) => state.gallery);
 
   const isDrawing = !!currentStroke.points.length;
   const dispatch = useDispatch();
@@ -108,25 +107,9 @@ const PaintPage = () => {
   const saveCanvas = () => {
     const { canvas } = getCanvasWithContext();
     if (!canvas) return;
-    console.log("saved");
-    // canvas.toDataURL('image/png');
-    canvas.toBlob((blob) => {
-      const newImg = document.createElement("img");
-      const url = URL.createObjectURL(blob);
+    const img = canvas.toDataURL('image/png');
+    dispatch(saveImage({ url: img, author: user }));
 
-      console.log(url, newImg);
-
-      dispatch(saveImage({ url: url, author: "" }));
-      console.log(currentGallery);
-
-      // newImg.onload = () => {
-      //   // no longer need to read the blob so it's revoked
-      //   URL.revokeObjectURL(url);
-      // };
-
-      // newImg.src = url;
-      // document.body.appendChild(newImg);
-    });
   };
   return (
     <div className={styles.paint}>

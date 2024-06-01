@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UserInterface {
   value: string | null;
-  name: string | undefined;
+  name: string;
   error: string | null;
 }
 
@@ -19,7 +19,7 @@ export const authSlice = createSlice({
     saveUser: (state, action: PayloadAction<string | null>) => {
       state.value = action.payload;
     },
-    saveName: (state, action: PayloadAction<string | undefined>) => {
+    saveName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
     saveError: (state, action: PayloadAction<string | null>) => {
