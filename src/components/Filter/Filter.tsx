@@ -15,6 +15,7 @@ const Filter = () => {
   };
   return (
     <select className={styles.select} onChange={handleFilter}>
+      <option value=""></option>
       {authors && authors.map((el) => <option value={el}>{el}</option>)}
     </select>
   );
