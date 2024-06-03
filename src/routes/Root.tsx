@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
 import app from "../firebase/firebaseConfig";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -7,7 +7,8 @@ import { saveUser, saveName, saveError } from "../redux/slices/authSlice";
 import { useEffect } from "react";
 
 function Root() {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation()
   app;
   const auth = getAuth();
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ function Root() {
       }
     });
   }, [auth, dispatch, navigate]);
+  
+  useEffect(() => {
+    dispatch(saveError(null));
+  },[location.pathname])
 
   return (
     <>

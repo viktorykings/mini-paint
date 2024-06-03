@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import Form from "../components/Form/Form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { saveError } from "../redux/slices/authSlice";
+import { errorHandler } from "../utils/errorHandler";
 
 const SignPage = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,8 @@ const SignPage = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password).catch((error) => {
       const errorMessage = error.message;
-      errorMessage
-        ? dispatch(saveError(errorMessage))
-        : dispatch(saveError(null));
+      const msg = errorHandler(errorMessage)
+      if (errorMessage) dispatch(saveError(msg as string));
     });
   };
   return (

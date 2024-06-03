@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { saveError, saveName } from "../redux/slices/authSlice";
+import { errorHandler } from "../utils/errorHandler";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,8 @@ const RegisterPage = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        if (errorMessage) dispatch(saveError(errorMessage));
+        const msg = errorHandler(errorMessage)
+        if (errorMessage) dispatch(saveError(msg as string));
       });
   };
   return (
