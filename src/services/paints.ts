@@ -2,7 +2,7 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
-import { ImageData } from "../redux/slices/gallerySlice";
+import { ImageData } from "../redux/slices/authorsSelectSlice";
 
 // Define a service using a base URL and expected endpoints
 export const firebaseApi = createApi({
@@ -18,7 +18,7 @@ export const firebaseApi = createApi({
 
           const blogRef = collection(db, "paints");
           const querySnaphot = await getDocs(blogRef);
-          let paints: ImageData[] = [];
+          const paints: ImageData[] = [];
           querySnaphot.forEach((doc) => {
             const data = doc.data();
             paints.push({ author: data.author, url: data.url, id: doc.id });
@@ -37,16 +37,17 @@ export const firebaseApi = createApi({
             url: img,
           });
           return { data: null };
+          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         } catch (error: any) {
-          console.error(error.message);
-          return { error: error.message };
+          if (error instanceof Error) {
+            return { error: error.message };
+          }
+          return error;
         }
       },
     }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useGetDataFromFirebaseQuery, useSetDataToFirebaseMutation } =
   firebaseApi;

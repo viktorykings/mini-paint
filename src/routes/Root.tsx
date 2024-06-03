@@ -15,14 +15,13 @@ function Root() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(saveUser(user.refreshToken));
-        dispatch(saveName((user.displayName as string)));
+        dispatch(saveName(user.displayName as string));
         navigate("/gallery");
       } else {
         dispatch(saveUser(null));
-        dispatch(saveName(('')));
-        dispatch(saveError(('')));
+        dispatch(saveName(""));
+        dispatch(saveError(""));
         navigate("/signin");
-
       }
     });
   }, [auth, dispatch, navigate]);

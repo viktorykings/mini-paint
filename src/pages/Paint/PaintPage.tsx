@@ -110,10 +110,9 @@ const PaintPage = () => {
     e.preventDefault();
     const { canvas } = getCanvasWithContext();
     if (!canvas) return;
-    const img = canvas.toDataURL('image/png');
-    setNewPaint({userName,img})
+    const img = canvas.toDataURL("image/png");
+    setNewPaint({ userName, img });
   };
-
 
   return (
     <div className={styles.paint}>
@@ -129,16 +128,30 @@ const PaintPage = () => {
       ></canvas>
       <div className={styles.tools}>
         <div className={styles.shapes} onClick={handleChangeTool}>
-          <button value="brush" className={currentStroke.shape === 'brush' ? styles.toolActive : ''}>
+          <button
+            value="brush"
+            className={currentStroke.shape === "brush" ? styles.toolActive : ""}
+          >
             <img src={WavyLine} alt="brush" />
           </button>
-          <button value="line" className={currentStroke.shape === 'line' ? styles.toolActive : ''}>
+          <button
+            value="line"
+            className={currentStroke.shape === "line" ? styles.toolActive : ""}
+          >
             <img src={Line} alt="line" />
           </button>
-          <button value="circle" className={currentStroke.shape === 'circle' ? styles.toolActive : ''}>
-            <img src={Circle} alt="circle"/>
+          <button
+            value="circle"
+            className={
+              currentStroke.shape === "circle" ? styles.toolActive : ""
+            }
+          >
+            <img src={Circle} alt="circle" />
           </button>
-          <button value="rect" className={currentStroke.shape === 'rect' ? styles.toolActive : ''}>
+          <button
+            value="rect"
+            className={currentStroke.shape === "rect" ? styles.toolActive : ""}
+          >
             <img src={Rect} alt="rect" />
           </button>
         </div>

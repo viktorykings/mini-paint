@@ -17,12 +17,11 @@ const RegisterPage = () => {
     password: string,
     userName: string | undefined,
   ) => {
-
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        return user
+        return user;
       })
       .then((user) => {
         updateProfile(user, {
@@ -32,12 +31,12 @@ const RegisterPage = () => {
       })
       .then(() => {
         signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) =>{
+          .then((userCredential) => {
             const user = userCredential.user;
-            dispatch(saveName(user.displayName as string))
+            dispatch(saveName(user.displayName as string));
           })
           .catch((error) => {
-            return error
+            return error;
           });
       })
       .catch((error) => {
