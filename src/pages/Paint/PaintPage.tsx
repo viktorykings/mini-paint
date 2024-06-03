@@ -105,7 +105,9 @@ const PaintPage = () => {
     context.clearRect(0, 0, 600, 600);
   };
 
-  const [setNewPaint] = useSetDataToFirebaseMutation();
+  const [setNewPaint] = useSetDataToFirebaseMutation({
+    fixedCacheKey: "setNewPaint",
+  });
   const saveCanvas = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const { canvas } = getCanvasWithContext();

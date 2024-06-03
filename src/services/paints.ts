@@ -6,18 +6,15 @@ import { ImageData } from "../redux/slices/authorsSelectSlice";
 
 // Define a service using a base URL and expected endpoints
 export const firebaseApi = createApi({
-  //   reducerPath: 'pokemonApi',
+  tagTypes: ["Images"],
   reducerPath: "firebaseApi",
   baseQuery: fakeBaseQuery(),
   endpoints: (build) => ({
     getDataFromFirebase: build.query<ImageData[], void>({
       async queryFn() {
         try {
-          //   const result = getDocs(collection(db, "paints")); // call firebase here
-          //   return { data: result }
-
-          const blogRef = collection(db, "paints");
-          const querySnaphot = await getDocs(blogRef);
+          const paintsRef = collection(db, "paints");
+          const querySnaphot = await getDocs(paintsRef);
           const paints: ImageData[] = [];
           querySnaphot.forEach((doc) => {
             const data = doc.data();
@@ -28,6 +25,7 @@ export const firebaseApi = createApi({
           return { error: e };
         }
       },
+      providesTags: ["Images"],
     }),
     setDataToFirebase: build.mutation({
       async queryFn({ userName, img }) {
@@ -45,6 +43,7 @@ export const firebaseApi = createApi({
           return error;
         }
       },
+      invalidatesTags: ["Images"],
     }),
   }),
 });
