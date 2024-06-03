@@ -2,7 +2,7 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
-import { ImageData } from "../redux/slices/authorsSelectSlice";
+import { ImageData } from "../interfaces/slices";
 
 // Define a service using a base URL and expected endpoints
 export const firebaseApi = createApi({

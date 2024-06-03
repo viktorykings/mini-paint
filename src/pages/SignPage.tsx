@@ -8,13 +8,12 @@ const SignPage = () => {
 
   const signIn = (email: string, password: string) => {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .catch((error) => {
-        const errorMessage = error.message;
-        errorMessage
-          ? dispatch(saveError(errorMessage))
-          : dispatch(saveError(null));
-      });
+    signInWithEmailAndPassword(auth, email, password).catch((error) => {
+      const errorMessage = error.message;
+      errorMessage
+        ? dispatch(saveError(errorMessage))
+        : dispatch(saveError(null));
+    });
   };
   return (
     <>

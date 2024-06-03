@@ -1,22 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface Gallery {
-  images: ImageData[];
-}
-
-export interface ImageData {
-  url: string;
-  author: string;
-  id: string;
-}
-
-export interface AuthorsData {
-  authors: string[];
-}
-export interface FilterValue {
-  author: string;
-  authors: string[];
-}
+import { FilterValue } from "../../interfaces/slices";
 
 const initialState: FilterValue = {
   author: "",

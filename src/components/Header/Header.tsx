@@ -33,12 +33,7 @@ const Header = () => {
         >
           signin
         </button>
-        <button
-          className={styles["header-btn"]}
-          onClick={() =>
-            signOut(auth)
-          }
-        >
+        <button className={styles["header-btn"]} onClick={() => signOut(auth)}>
           sign out
         </button>
       </div>

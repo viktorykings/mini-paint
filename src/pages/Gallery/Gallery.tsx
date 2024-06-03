@@ -21,8 +21,7 @@ const Gallery = () => {
   useEffect(() => {
     const authors = new Set(data?.map((el) => el.author));
     dispatch(setFilterAuthors(Array.from(authors)));
-
-  }, [data])
+  }, [data, dispatch]);
 
   if (isLoading) return <p>Loading....</p>;
 

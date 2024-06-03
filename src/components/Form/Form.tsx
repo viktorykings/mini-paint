@@ -3,13 +3,7 @@ import styles from "./Form.module.css";
 import { RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { saveName } from "../../redux/slices/authSlice";
-
-interface FormProps {
-  formTitle: string;
-  isRegisterForm: boolean;
-  btnText: string;
-  handleClick: (email: string, password: string, userName?: string) => void;
-}
+import { FormProps } from "../../interfaces/components";
 
 const Form = (props: FormProps) => {
   const [name, setName] = useState("");

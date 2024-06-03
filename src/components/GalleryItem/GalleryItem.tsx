@@ -1,8 +1,6 @@
+import { GalleryItemProps } from "../../interfaces/components";
 import styles from "./GalleryItem.module.css";
-interface GalleryItemProps {
-  src: string;
-  author: string;
-}
+
 const GalleryItem = (props: GalleryItemProps) => {
   const { src, author } = props;
   return (
