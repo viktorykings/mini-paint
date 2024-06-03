@@ -23,7 +23,7 @@ import Rect from "../../assets/rectangle.svg";
 import Circle from "../../assets/circle.svg";
 import Line from "../../assets/line.svg";
 import WavyLine from "../../assets/wavyLine.svg";
-import { saveImage } from "../../redux/slices/gallerySlice";
+import { useSetDataToFirebaseMutation } from "../../services/paints";
 
 const PaintPage = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -32,13 +32,13 @@ const PaintPage = () => {
     return { canvas, context: canvas?.getContext("2d") };
   };
 
-  const user = useSelector((state: RootState) => state.auth.name);
+  const userName = useSelector((state: RootState) => state.auth.name);
   const currentStroke = useSelector((state: RootState) => state.stroke);
 
   const isDrawing = !!currentStroke.points.length;
   const dispatch = useDispatch();
 
-  console.log(user);
+  console.log(userName);
   useEffect(() => {
     const { context } = getCanvasWithContext();
     if (!context) {
@@ -104,13 +104,17 @@ const PaintPage = () => {
     if (!context) return;
     context.clearRect(0, 0, 600, 600);
   };
-  const saveCanvas = () => {
+
+  const [setNewPaint] = useSetDataToFirebaseMutation();
+  const saveCanvas = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     const { canvas } = getCanvasWithContext();
     if (!canvas) return;
     const img = canvas.toDataURL('image/png');
-    dispatch(saveImage({ url: img, author: user }));
-
+    setNewPaint({userName,img})
   };
+
+
   return (
     <div className={styles.paint}>
       <canvas

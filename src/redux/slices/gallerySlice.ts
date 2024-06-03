@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Gallery {
+export interface Gallery {
   images: ImageData[];
 }
 
-interface ImageData {
+export interface ImageData {
   url: string;
   author: string;
 }

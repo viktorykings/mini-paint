@@ -20,6 +20,7 @@ function Root() {
         navigate("/gallery");
       } else {
         dispatch(saveUser(null));
+        dispatch(saveName(('')));
       }
     });
   }, [auth, dispatch, navigate]);
