@@ -16,7 +16,7 @@ function Root() {
       if (user) {
         dispatch(saveUser(user.refreshToken));
         dispatch(saveName(user.displayName as string));
-        navigate("/gallery");
+        navigate("/paint");
       } else {
         dispatch(saveUser(null));
         dispatch(saveName(""));

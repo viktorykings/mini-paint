@@ -20,7 +20,6 @@ const RegisterPage = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         return user;
       })
       .then((user) => {

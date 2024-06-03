@@ -22,9 +22,6 @@ const initialState: FilterValue = {
   author: "",
   authors: [],
 };
-// const initialState: AuthorsData = {
-//   authors: [],
-// };
 
 const filterAuthors = createSlice({
   name: "galleryFilter",

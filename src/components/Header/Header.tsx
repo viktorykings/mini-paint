@@ -37,12 +37,6 @@ const Header = () => {
           className={styles["header-btn"]}
           onClick={() =>
             signOut(auth)
-              .then(() => {
-                console.log("user signed out");
-              })
-              .catch((error) => {
-                console.log("error", error);
-              })
           }
         >
           sign out
