@@ -40,10 +40,10 @@ export const drawCircle = (
   coords: Coords | null,
 ) => {
   if (!coords) return;
+  const x =  Math.abs(coords.start.x - coords.end.x)
+  const y =  Math.abs(coords.start.y - coords.end.y)
   const rad =
-    coords.end.x > coords.end.y
-      ? coords.end.x - coords.start.x
-      : coords.end.y - coords.start.y;
+  x > y ? x : y
   context.beginPath();
   context.arc(coords.start.x, coords.start.y, rad, 0, 2 * Math.PI);
   context.stroke();
