@@ -1,6 +1,6 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { addDoc, collection, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { ImageData } from "../redux/slices/gallerySlice";
 

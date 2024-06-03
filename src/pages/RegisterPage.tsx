@@ -3,28 +3,42 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { saveError } from "../redux/slices/authSlice";
+import { saveError, saveName } from "../redux/slices/authSlice";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
+  const auth = getAuth();
+
   const singUp = (
     email: string,
     password: string,
     userName: string | undefined,
   ) => {
-    const auth = getAuth();
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        if (user) {
-          updateProfile(user, {
-            displayName: userName,
+        return user
+      })
+      .then((user) => {
+        updateProfile(user, {
+          displayName: userName,
+        });
+        return user;
+      })
+      .then(() => {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) =>{
+            const user = userCredential.user;
+            dispatch(saveName(user.displayName as string))
+          })
+          .catch((error) => {
+            return error
           });
-        }
       })
       .catch((error) => {
         const errorMessage = error.message;

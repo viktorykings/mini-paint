@@ -16,7 +16,7 @@ const SignPage = () => {
       .catch((error) => {
         // const errorCode = error.code;
         const errorMessage = error.message;
-        if (errorMessage) dispatch(saveError(errorMessage));
+        errorMessage ?  dispatch(saveError(errorMessage)) :  dispatch(saveError(null));
       });
   };
   return (

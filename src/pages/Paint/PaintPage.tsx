@@ -38,7 +38,6 @@ const PaintPage = () => {
   const isDrawing = !!currentStroke.points.length;
   const dispatch = useDispatch();
 
-  console.log(userName);
   useEffect(() => {
     const { context } = getCanvasWithContext();
     if (!context) {
