@@ -6,7 +6,7 @@ const initialState: Stroke = {
   points: [],
   color: "#000",
   width: 2,
-  shape: "",
+  shape: "brush",
   coords: { start: { x: 0, y: 0 }, end: { x: 0, y: 0 } },
 };
 
@@ -29,7 +29,7 @@ const strokeSlice = createSlice({
     setShape: (state, action: PayloadAction<string>) => {
       state.shape = action.payload;
     },
-    setCoords: (state, action: PayloadAction<Coords>) => {
+    setCoords: (state, action: PayloadAction<Coords | null>) => {
       state.coords = action.payload;
     },
   },

@@ -5,19 +5,16 @@ import { useGetDataFromFirebaseQuery } from "../../services/paints";
 
 
 const Gallery = () => {
-const {data, isLoading, isFetching} = useGetDataFromFirebaseQuery()
-console.log(data)
+const {data, isLoading} = useGetDataFromFirebaseQuery()
 
 if(isLoading) return (<p>Loading....</p>)
-  console.log(isFetching)
 
   return (
     <div className={styles.gallery}>
-      {isFetching}
       <Filter name=""  />
       <div className={styles.container}>
         {data && data.map((el) => (
-          <GalleryItem src={el.url} author={el.author} />
+          <GalleryItem src={el.url} author={el.author} key={el.id} />
         ))}
       </div>
     </div>

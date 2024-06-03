@@ -53,3 +53,8 @@
 .canvas {
   background-color: var(--white);
 }
+.toolActive{
+  border: 1px solid var(--green);
+  outline: 1px solid var(--green);
+  color: var(--green);
+}

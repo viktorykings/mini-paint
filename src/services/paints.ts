@@ -21,7 +21,7 @@ export const firebaseApi = createApi({
           let paints: ImageData[] = [];
           querySnaphot.forEach((doc) => {
             const data = doc.data();
-            paints.push({ author: data.author, url: data.url });
+            paints.push({ author: data.author, url: data.url, id: doc.id });
           });
           return { data: paints };
         } catch (e) {
@@ -43,9 +43,6 @@ export const firebaseApi = createApi({
         }
       },
     }),
-    // getPokemonByName: builder.query<Pokemon, string>({
-    //   query: (name) => `pokemon/${name}`,
-    // }),
   }),
 });
 

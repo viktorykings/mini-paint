@@ -7,6 +7,7 @@ export interface Gallery {
 export interface ImageData {
   url: string;
   author: string;
+  id: string;
 }
 
 const initialState: Gallery = {

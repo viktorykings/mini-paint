@@ -1,10 +1,11 @@
 @import url(../../colors.css);
 
 header {
-  position: fixed;
+    display: flex;
+  /* position: ; */
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   background-color: transparent;
   display: flex;
   justify-content: space-between;

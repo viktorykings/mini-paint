@@ -22,8 +22,9 @@ export const drawStroke = (
 export const drawRect = (
   context: CanvasRenderingContext2D,
   width: number,
-  coords: Coords,
+  coords: Coords | null,
 ) => {
+  if(!coords) return
   context.beginPath();
   context.moveTo(coords.start.x, coords.start.y);
   const h = coords.end.y - coords.start.y + width;
@@ -36,8 +37,9 @@ export const drawRect = (
 
 export const drawCircle = (
   context: CanvasRenderingContext2D,
-  coords: Coords,
+  coords: Coords | null,
 ) => {
+  if(!coords) return
   const rad =
     coords.end.x > coords.end.y
       ? coords.end.x - coords.start.x
@@ -48,7 +50,8 @@ export const drawCircle = (
   context.closePath();
 };
 
-export const drawLine = (context: CanvasRenderingContext2D, coords: Coords) => {
+export const drawLine = (context: CanvasRenderingContext2D, coords: Coords | null) => {
+  if(!coords) return
   context.beginPath();
   context.moveTo(coords.start.x, coords.start.y);
   context.lineTo(coords.end.x, coords.end.y);

@@ -8,7 +8,7 @@ export type Stroke = {
   color: string;
   width: number;
   shape: string;
-  coords: Coords;
+  coords: Coords | null;
 };
 
 export type Point = {

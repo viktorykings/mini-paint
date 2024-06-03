@@ -75,6 +75,7 @@ const PaintPage = () => {
   };
   const draw = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     if (!isDrawing) {
+      dispatch(setCoords(null));
       return;
     }
     const { offsetX, offsetY } = nativeEvent;
@@ -128,16 +129,16 @@ const PaintPage = () => {
       ></canvas>
       <div className={styles.tools}>
         <div className={styles.shapes} onClick={handleChangeTool}>
-          <button value="brush">
+          <button value="brush" className={currentStroke.shape === 'brush' ? styles.toolActive : ''}>
             <img src={WavyLine} alt="brush" />
           </button>
-          <button value="line">
+          <button value="line" className={currentStroke.shape === 'line' ? styles.toolActive : ''}>
             <img src={Line} alt="line" />
           </button>
-          <button value="circle">
-            <img src={Circle} alt="circle" />
+          <button value="circle" className={currentStroke.shape === 'circle' ? styles.toolActive : ''}>
+            <img src={Circle} alt="circle"/>
           </button>
-          <button value="rect">
+          <button value="rect" className={currentStroke.shape === 'rect' ? styles.toolActive : ''}>
             <img src={Rect} alt="rect" />
           </button>
         </div>
