@@ -41,7 +41,7 @@ const RegisterPage = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        const msg = errorHandler(errorMessage)
+        const msg = errorHandler(errorMessage);
         if (errorMessage) dispatch(saveError(msg as string));
       });
   };

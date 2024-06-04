@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import strokeReducer from "./slices/strokeSlice";
 import authorsSelectReducer from "./slices/authorsSelectSlice";
+import themeReducer from "./slices/themeSlice";
 
 import { firebaseApi } from "../services/paints";
 
@@ -10,6 +11,7 @@ export const store = configureStore({
     auth: authReducer,
     stroke: strokeReducer,
     authorsSelect: authorsSelectReducer,
+    theme: themeReducer,
     [firebaseApi.reducerPath]: firebaseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

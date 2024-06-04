@@ -1,14 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { getAuth, signOut } from "firebase/auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import Light from "../../assets/light.svg";
+import Dark from "../../assets/dark.svg";
+import { changeTheme } from "../../redux/slices/themeSlice";
+import { useEffect } from "react";
+
 const Header = () => {
   const auth = getAuth();
   const navigate = useNavigate();
-  const isUser = useSelector(
-    (state: RootState) => state.auth.value,
-  );
+  const dispatch = useDispatch();
+  const isUser = useSelector((state: RootState) => state.auth.value);
+  const { isLightMode } = useSelector((state: RootState) => state.theme);
+
+  const handleThemeChange = () => {
+    isLightMode ? dispatch(changeTheme(false)) : dispatch(changeTheme(true));
+  };
+
+  useEffect(() => {
+    isLightMode
+      ? document.body.classList.remove("dark-mode-bg")
+      : document.body.classList.add("dark-mode-bg");
+  }, [isLightMode, dispatch]);
 
   return (
     <header>
@@ -26,21 +41,33 @@ const Header = () => {
         >
           Gallery
         </button>
-        {!isUser &&<button
-          className={styles["header-btn"]}
-          onClick={() => navigate("/register")}
-        >
-          create account
-        </button>}
-        {!isUser && <button
-          className={styles["header-btn"]}
-          onClick={() => navigate("/signin")}
-        >
-          signin
-        </button>}
-        {!!isUser && <button className={styles["header-btn"]} onClick={() => signOut(auth)}>
-          sign out
-        </button>}
+        {!isUser && (
+          <button
+            className={styles["header-btn"]}
+            onClick={() => navigate("/register")}
+          >
+            create account
+          </button>
+        )}
+        {!isUser && (
+          <button
+            className={styles["header-btn"]}
+            onClick={() => navigate("/signin")}
+          >
+            signin
+          </button>
+        )}
+        {!!isUser && (
+          <button
+            className={styles["header-btn"]}
+            onClick={() => signOut(auth)}
+          >
+            sign out
+          </button>
+        )}
+        <button className={styles["theme-switch"]} onClick={handleThemeChange}>
+          <img src={isLightMode ? Light : Dark} alt="" />
+        </button>
       </div>
     </header>
   );

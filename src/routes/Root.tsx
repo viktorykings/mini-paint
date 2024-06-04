@@ -7,8 +7,8 @@ import { saveUser, saveName, saveError } from "../redux/slices/authSlice";
 import { useEffect } from "react";
 
 function Root() {
-    const navigate = useNavigate();
-    const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   app;
   const auth = getAuth();
   const dispatch = useDispatch();
@@ -26,10 +26,10 @@ function Root() {
       }
     });
   }, [auth, dispatch, navigate]);
-  
+
   useEffect(() => {
     dispatch(saveError(null));
-  },[location.pathname])
+  }, [location.pathname, dispatch]);
 
   return (
     <>

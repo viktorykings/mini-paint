@@ -10,7 +10,7 @@ export interface FilterValue {
 }
 
 export interface UserInterface {
-    value: string | null;
-    name: string;
-    error: string | null;
-  }
+  value: string | null;
+  name: string;
+  error: string | null;
+}
