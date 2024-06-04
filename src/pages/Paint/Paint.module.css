@@ -1,0 +1,85 @@
+@import url(../../colors.css);
+
+.paint {
+  display: flex;
+  gap: 20px;
+  background-color: var(--paint-bg);
+  padding: 20px;
+}
+
+.tools {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.shapes{
+    display: flex;
+    gap: 10px;
+}
+.shapes button {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+.shapes button:hover,
+.clean:hover {
+  border: 1px solid var(--green);
+  outline: 1px solid var(--green);
+  color: var(--green);
+}
+.shapes img {
+  width: 30px;
+  height: 30px;
+}
+
+.brush-size{
+    width: 200px;
+}
+.brush-size p{
+    margin: 0;
+}
+.brush-size input{
+    width: inherit;
+    padding: 0;
+    height: 20px;
+    cursor: pointer;
+}
+.brush-size input:focus{
+  border: none;
+  outline: none;
+}
+
+.canvas {
+  background-color: var(--white);
+}
+.toolActive{
+  border: 1px solid var(--green);
+  outline: 1px solid var(--green);
+  color: var(--green);
+}
+
+@media (max-width: 968px){
+  .paint{
+    flex-direction: column;
+  }
+  .tools{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .shapes button{
+    margin: 5px;
+  }
+  .brush-size{
+    order: -1;
+  }
+}
+@media (max-width: 762px){
+  .tools{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+
+}

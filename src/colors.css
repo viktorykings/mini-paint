@@ -1,0 +1,20 @@
+:root {
+    --white: #ffffff;
+    --black: black;
+    --green: #21bc6f;
+    --blue: #9198e5;
+    --dark-green: #1c372a;
+    --dark-blue: #30335a;
+    --red: #ff4343;
+    --form-shadow: #19c6b5;
+    --grey-text: #838383;
+    --grey-text-darker: #505050;
+    --blue-text: #228b81;
+    --main-background: linear-gradient(45deg, var(--green), var(--blue));
+    --dark-background: linear-gradient(45deg, var(--dark-green), var(--dark-blue));
+    --paint-bg: #5e628d;
+    --input-bg: #ededed;
+  }
+  * {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  }
