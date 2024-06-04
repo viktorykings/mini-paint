@@ -1,4 +1,9 @@
 .select{
-    width: 20vw;
+    width: 30vw;
     height: 50px;
 }
+@media (max-width: 968px){
+    .select{
+        width: 50vw;
+    }
+  }

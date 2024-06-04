@@ -1,43 +1,55 @@
 @import url(../../colors.css);
 
 header {
-    display: flex;
-  /* position: ; */
-  top: 0;
-  left: 0;
+  display: flex;
   width: 100vw;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 40px;
   box-sizing: border-box;
 }
-.logo{
-    font-size: 3em;
+.logo {
+  font-size: 3em;
 }
-.links{
-    display: flex;
-    gap: 30px
+.links {
+  display: flex;
+  gap: 30px;
 }
-.header-link{
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
+.header-link {
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
 }
-.header-link:hover{
-    color: var(--grey-text-darker);
-}
-
-.header-btn{
-    background-color: var(--white);
-    color: var(--grey-text);
-    transition: color 0.1s ease;
+.header-link:hover {
+  color: var(--grey-text-darker);
 }
 
-.header-btn:hover{
-    background-color: transparent;
-    color: var(--white);
+.header-btn {
+  background-color: var(--white);
+  color: var(--grey-text);
+  transition: color 0.1s ease;
 }
 
+.header-btn:hover {
+  background-color: transparent;
+  color: var(--white);
+}
+
+@media (max-width: 968px) {
+  header {
+    padding: 20px;
+  }
+  .links {
+    gap: 15px;
+  }
+  .logo {
+    font-size: 2em;
+  }
+  .header-btn{
+    font-size: 0.9em;
+  }
+}

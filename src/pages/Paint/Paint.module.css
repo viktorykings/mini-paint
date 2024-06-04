@@ -58,3 +58,28 @@
   outline: 1px solid var(--green);
   color: var(--green);
 }
+
+@media (max-width: 968px){
+  .paint{
+    flex-direction: column;
+  }
+  .tools{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .shapes button{
+    margin: 5px;
+  }
+  .brush-size{
+    order: -1;
+  }
+}
+@media (max-width: 762px){
+  .tools{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+
+}
