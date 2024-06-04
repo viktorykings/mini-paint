@@ -28,11 +28,12 @@ export const firebaseApi = createApi({
       providesTags: ["Images"],
     }),
     setDataToFirebase: build.mutation({
-      async queryFn({ userName, img }) {
+      async queryFn({ userName, img, id }) {
         try {
           await addDoc(collection(db, "paints"), {
             author: userName,
             url: img,
+            id: id
           });
           return { data: null };
           // eslint-disable-next-line  @typescript-eslint/no-explicit-any

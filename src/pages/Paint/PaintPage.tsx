@@ -33,6 +33,7 @@ const PaintPage = () => {
   };
 
   const userName = useSelector((state: RootState) => state.auth.name);
+  const id = useSelector((state: RootState) => state.auth.value);
   const currentStroke = useSelector((state: RootState) => state.stroke);
 
   const isDrawing = !!currentStroke.points.length;
@@ -113,7 +114,7 @@ const PaintPage = () => {
     const { canvas } = getCanvasWithContext();
     if (!canvas) return;
     const img = canvas.toDataURL("image/png");
-    setNewPaint({ userName, img });
+    setNewPaint({ userName, img, id });
   };
 
   return (
