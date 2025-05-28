@@ -1,0 +1,1 @@
+import{b as s,c as n,i as t,j as r}from"./index-C9d_r1Ji.js";function i(){const e=s(),o=n();return t(e)?r.jsxs("div",{id:"error-page",children:[r.jsx("h1",{children:"Oops!"}),r.jsx("p",{children:"Sorry, an unexpected error has occurred."}),r.jsx("p",{children:e.data}),r.jsx("button",{onClick:()=>o("/"),children:"← Go back"})]}):null}export{i as default};

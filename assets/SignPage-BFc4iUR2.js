@@ -1,1 +1,0 @@
-import{u as c,j as s,F as m,g as h,s as l,a as d,e as u}from"./index-Cq7FfLD6.js";const f=()=>{const e=c(),t=(n,r)=>{const i=h();l(i,n,r).catch(o=>{const a=o.message,g=u(a);a&&e(d(g))})};return s.jsx(s.Fragment,{children:s.jsx(m,{formTitle:"Sign in",isRegisterForm:!1,btnText:"sign in",handleClick:t})})};export{f as default};
